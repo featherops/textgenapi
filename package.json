@@ -1,0 +1,21 @@
+{
+  "name": "textgen-llm-api",
+  "version": "1.0.0",
+  "description": "OpenAI-compatible middleware for chutes.ai LLM API with Supabase integration.",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "initdb": "node src/init_db.js",
+    "initmodels": "node src/init_models.js"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.39.7",
+    "axios": "^1.6.7",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.2",
+    "openai": "^4.96.0",
+    "uuid": "^9.0.1"
+  }
+}
