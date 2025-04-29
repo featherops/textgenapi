@@ -32,6 +32,22 @@ router.post('/', async (req, res) => {
   }
 
   try {
+    // Log the request to message_logs before streaming
+    try {
+      await supabase.from('message_logs').insert([
+        {
+          user_id,
+          api_key_id,
+          external_api_key,
+          model_id: modelRow.id,
+          request_content: JSON.stringify(req.body),
+          response_content: null // Not logging full stream for now
+        }
+      ]);
+    } catch (logErr) {
+      console.error('Failed to log message:', logErr);
+    }
+
     // Always stream: ignore client 'stream' param
     const axios = require('axios');
     const response = await axios({
